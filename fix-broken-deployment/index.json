@@ -15,6 +15,11 @@
     ],
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "broken-deployment.yaml", "target": "/root/assets", "chmod": "+w"}
+      ]
     }
   },
   "backend": {
