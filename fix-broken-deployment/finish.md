@@ -11,7 +11,9 @@ kubectl set image deployment/web nginx=nginx:1.27-alpine -n ckad-lab
 kubectl rollout status deployment/web -n ckad-lab
 ```
 
-This workflow is useful in the CKAD exam and in real Kubernetes troubleshooting:
+## Helpful tips: a troubleshooting workflow
+
+This applies both in the CKAD exam and in real Kubernetes troubleshooting:
 
 1. inspect the workload;
 2. inspect Pod events and container state;
