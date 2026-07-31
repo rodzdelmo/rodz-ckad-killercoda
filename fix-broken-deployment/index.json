@@ -22,7 +22,7 @@
     },
     "assets": {
       "host01": [
-        {"file": "broken-deployment.yaml", "target": "/root/assets", "chmod": "+w"}
+        {"file": "deployment1.yaml", "target": "/root/assets", "chmod": "+w"}
       ]
     }
   },
