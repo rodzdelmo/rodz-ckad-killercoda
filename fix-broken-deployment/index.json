@@ -8,9 +8,13 @@
     },
     "steps": [
       {
-        "title": "Diagnose and repair the Deployment",
-        "text": "step1/text.md",
-        "verify": "step1/verify.sh"
+        "title": "Look around",
+        "text": "step1/text.md"
+      },
+      {
+        "title": "Fix the Deployment",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
       }
     ],
     "finish": {
