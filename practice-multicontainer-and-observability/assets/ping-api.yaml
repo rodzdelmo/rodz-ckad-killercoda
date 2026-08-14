@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: uptime-ops
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ping-api
+  namespace: uptime-ops
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.25
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: 80
+        initialDelaySeconds: 5
+        periodSeconds: 5

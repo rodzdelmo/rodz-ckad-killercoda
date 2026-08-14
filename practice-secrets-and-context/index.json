@@ -1,0 +1,33 @@
+{
+  "title": "CKAD Practice: Secrets & Security Context Recap",
+  "description": "Wire a Secret into a second Deployment, then read a Pod's SecurityContext and nodeSelector fields.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Wire up a second Secret",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Read the SecurityContext and nodeSelector",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "policy-checker.yaml", "target": "/root/assets", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

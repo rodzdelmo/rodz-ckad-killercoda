@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello-ops
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-config
+  namespace: hello-ops
+data:
+  GREETING_MESSAGE: "hello from the config map"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-service
+  namespace: hello-ops
+spec:
+  containers:
+    - name: hello
+      image: busybox:1.36
+      command: ["sh", "-c", "sleep 3600"]
+      env:
+        - name: GREETING_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: hello-config
+              key: GREETING_MSG

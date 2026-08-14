@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: signal-ops
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: metrics-relay
+  namespace: signal-ops
+spec:
+  containers:
+    - name: relay
+      image: busybox:1.36
+      command: ["sh", "-c", "sleep 3600"]
+    - name: exporter
+      image: busybox:1.36
+      command: ["sh", "-c", "sleep 3600"]

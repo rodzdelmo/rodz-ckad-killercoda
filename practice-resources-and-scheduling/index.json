@@ -1,0 +1,34 @@
+{
+  "title": "CKAD Practice: Resources, Service Accounts & Scheduling",
+  "description": "Resize a Pod's compute resources, identify its ServiceAccount, and fix a missing toleration.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Resize resources and find the ServiceAccount",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Schedule onto the tainted pool",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "ledger-worker.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "gpu-pods.yaml", "target": "/root/assets", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

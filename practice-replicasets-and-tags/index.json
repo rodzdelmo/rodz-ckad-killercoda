@@ -1,0 +1,33 @@
+{
+  "title": "CKAD Practice: ReplicaSets, Deployments & Image Tags",
+  "description": "Recap the ReplicaSet-to-Deployment relationship and practice identifying a running image tag.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "ReplicaSet to Deployment",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Which tag is running?",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "store-replicas.yaml", "target": "/root/assets", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

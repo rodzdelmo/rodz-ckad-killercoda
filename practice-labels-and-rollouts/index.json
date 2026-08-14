@@ -1,0 +1,23 @@
+{
+  "title": "CKAD Practice: Labels, Selectors & Rolling Updates",
+  "description": "Add a Pod template label to a Deployment and confirm a safe rolling update.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Label the Pods and roll out the change",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

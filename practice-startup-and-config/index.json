@@ -1,0 +1,34 @@
+{
+  "title": "CKAD Practice: Startup Commands & ConfigMaps",
+  "description": "Fix a container's broken startup command and a mismatched ConfigMap key reference.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix the startup command",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix the ConfigMap key mismatch",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "job-runner.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "hello-service.yaml", "target": "/root/assets", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

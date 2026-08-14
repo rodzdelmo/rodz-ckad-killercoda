@@ -1,0 +1,40 @@
+{
+  "title": "CKAD Practice: Multi-Container Pods & Observability",
+  "description": "Recap init containers vs. long-running containers, fix a liveness probe, and identify the right logs command.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Init container or long-running container?",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix the liveness probe",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Read one container's logs",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "web-with-cache.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "ping-api.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "metrics-relay.yaml", "target": "/root/assets", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

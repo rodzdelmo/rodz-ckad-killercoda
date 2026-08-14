@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euo pipefail
+
+namespace="intro-ops"
+pod="api-recap"
+expected_image="nginx:1.25"
+
+phase="$(kubectl get pod "$pod" -n "$namespace" -o jsonpath='{.status.phase}' 2>/dev/null || true)"
+image="$(kubectl get pod "$pod" -n "$namespace" -o jsonpath='{.spec.containers[0].image}' 2>/dev/null || true)"
+
+if [[ "$phase" != "Running" ]]; then
+  echo "Pod $pod must be Running in namespace $namespace."
+  exit 1
+fi
+
+if [[ "$image" != "$expected_image" ]]; then
+  echo "Pod $pod must use image $expected_image."
+  exit 1
+fi
+
+if kubectl get pod "$pod" -n default >/dev/null 2>&1; then
+  echo "Pod $pod still exists in the default namespace — delete it there."
+  exit 1
+fi
+
+echo "Success: $pod is Running in $namespace."
+exit 0
