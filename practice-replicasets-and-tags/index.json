@@ -1,5 +1,5 @@
 {
-  "title": "CKAD Practice: Converting a ReplicaSet to a Deployment",
+  "title": "CKAD: Deployment,RS & tags",
   "description": "Convert a bare ReplicaSet into a Deployment, then identify the exact image tag running after a new rollout.",
   "details": {
     "intro": {
