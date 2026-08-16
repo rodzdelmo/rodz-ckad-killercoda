@@ -1,32 +1,30 @@
 #!/bin/bash
 set -euo pipefail
 
-namespace="guard-ops"
-pod="policy-checker"
-answer_file="/root/policy-checker.txt"
+namespace="config-ops"
+pod="app-pod"
+configmap="app-config"
 
-expected_run_as_user="$(kubectl get pod "$pod" -n "$namespace" -o jsonpath='{.spec.securityContext.runAsUser}')"
-selector_key="$(kubectl get pod "$pod" -n "$namespace" -o go-template='{{range $k, $v := .spec.nodeSelector}}{{$k}}{{end}}')"
-selector_value="$(kubectl get pod "$pod" -n "$namespace" -o go-template='{{range $k, $v := .spec.nodeSelector}}{{$v}}{{end}}')"
-expected_selector_line="${selector_key}=${selector_value}"
+kubectl get configmap "$configmap" -n "$namespace" >/dev/null 2>&1
 
-if [[ ! -f "$answer_file" ]]; then
-  echo "$answer_file does not exist."
+phase="$(kubectl get pod "$pod" -n "$namespace" -o jsonpath='{.status.phase}' 2>/dev/null || true)"
+if [[ "$phase" != "Running" ]]; then
+  echo "Pod $pod must be Running in namespace $namespace."
   exit 1
 fi
 
-line1="$(sed -n '1p' "$answer_file")"
-line2="$(sed -n '2p' "$answer_file")"
+expected_value="$(kubectl get configmap "$configmap" -n "$namespace" -o jsonpath='{.data.APP_MODE}')"
+actual_value="$(kubectl exec "$pod" -n "$namespace" -- printenv APP_MODE 2>/dev/null || true)"
 
-if [[ "$line1" != "$expected_run_as_user" ]]; then
-  echo "Line 1 must be the runAsUser value: $expected_run_as_user"
+if [[ -z "$actual_value" ]]; then
+  echo "APP_MODE is not set inside $pod."
   exit 1
 fi
 
-if [[ "$line2" != "$expected_selector_line" ]]; then
-  echo "Line 2 must be the nodeSelector key=value pair: $expected_selector_line"
+if [[ "$actual_value" != "$expected_value" ]]; then
+  echo "APP_MODE inside $pod does not match ConfigMap $configmap."
   exit 1
 fi
 
-echo "Success: $answer_file correctly records the SecurityContext and nodeSelector."
+echo "Success: $pod loads APP_MODE=$actual_value from ConfigMap $configmap."
 exit 0

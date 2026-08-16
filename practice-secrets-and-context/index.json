@@ -1,6 +1,6 @@
 {
-  "title": "CKAD Practice: Secrets & Security Context Recap",
-  "description": "Wire a Secret into a second Deployment, then read a Pod's SecurityContext and nodeSelector fields.",
+  "title": "CKAD Practice: Secrets, ConfigMaps & Security Context Recap",
+  "description": "Wire a Secret into a second Deployment, load a ConfigMap into a Pod, then read a Pod's SecurityContext and nodeSelector fields.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -13,9 +13,14 @@
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Read the SecurityContext and nodeSelector",
+        "title": "Load a ConfigMap into a Pod",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Read the SecurityContext and nodeSelector",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
       }
     ],
     "finish": {

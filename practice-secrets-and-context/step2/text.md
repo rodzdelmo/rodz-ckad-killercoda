@@ -1,16 +1,28 @@
 ## Task
 
-In namespace `guard-ops`, Pod `policy-checker` was configured months ago with specific security and scheduling rules nobody has re-read since.
+ConfigMap `app-config` already exists in namespace `config-ops` with key `APP_MODE=production`.
 
-The Pod is `Pending` — that's fine, this is a read-only recap, not a bug hunt.
+Create a Pod named `app-pod` (image `busybox:1.36`, command `sh -c "sleep 3600"`) that loads **every** key from that ConfigMap as environment variables.
+
+A Pod's `env` can't be patched in place once it's running, so generate the manifest first instead of using `kubectl run` directly:
 
 ```bash
-kubectl get pod policy-checker -n guard-ops -o yaml
+kubectl run app-pod --image=busybox:1.36 -n config-ops --dry-run=client -o yaml \
+  --command -- sh -c "sleep 3600" > /root/app-pod.yaml
 ```
 
-Write your answer to `/root/policy-checker.txt` using exactly two lines:
+Edit `/root/app-pod.yaml` and add an `envFrom` entry under the container:
 
-- line 1: the `securityContext.runAsUser` **value**, no trailing spaces
-- line 2: the `nodeSelector` **key/value** pair, formatted as `key=value`
+```yaml
+      envFrom:
+        - configMapRef:
+            name: app-config
+```
 
-When `/root/policy-checker.txt` has both lines correct, click **Check**.
+Then apply it:
+
+```bash
+kubectl apply -f /root/app-pod.yaml
+```
+
+When `kubectl exec app-pod -n config-ops -- printenv APP_MODE` prints `production`, click **Check**.

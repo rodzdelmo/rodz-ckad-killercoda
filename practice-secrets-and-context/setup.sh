@@ -16,3 +16,6 @@ kubectl set env deployment/token-auth --from=secret/token-secret -n auth-ops
 kubectl rollout status deployment/token-auth -n auth-ops --timeout=60s
 
 kubectl apply -f /root/assets/policy-checker.yaml
+
+kubectl create namespace config-ops --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap app-config --from-literal=APP_MODE=production -n config-ops
