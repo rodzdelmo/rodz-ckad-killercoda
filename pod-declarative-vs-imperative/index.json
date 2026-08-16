@@ -13,14 +13,19 @@
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Create a Pod declaratively",
+        "title": "Generate a manifest with --dry-run",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },
       {
-        "title": "Diagnose and fix an image typo",
+        "title": "Create a Pod declaratively",
         "text": "step3/text.md",
         "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Diagnose and fix an image typo",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
       }
     ],
     "finish": {

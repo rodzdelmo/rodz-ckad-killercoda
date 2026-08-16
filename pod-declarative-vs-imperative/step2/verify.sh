@@ -1,9 +1,15 @@
 #!/bin/bash
 set -euo pipefail
 
-namespace="intro-ops"
-pod="api-recap"
-expected_image="nginx:1.25"
+namespace="ckad-lab"
+pod="web-dryrun"
+expected_image="nginx:1.27-alpine"
+manifest_file="/root/web-dryrun.yaml"
+
+if [[ ! -f "$manifest_file" ]]; then
+  echo "$manifest_file does not exist — redirect the dry-run output to a file first."
+  exit 1
+fi
 
 phase="$(kubectl get pod "$pod" -n "$namespace" -o jsonpath='{.status.phase}' 2>/dev/null || true)"
 image="$(kubectl get pod "$pod" -n "$namespace" -o jsonpath='{.spec.containers[0].image}' 2>/dev/null || true)"
@@ -18,10 +24,5 @@ if [[ "$image" != "$expected_image" ]]; then
   exit 1
 fi
 
-if kubectl get pod "$pod" -n default >/dev/null 2>&1; then
-  echo "Pod $pod still exists in the default namespace — delete it there."
-  exit 1
-fi
-
-echo "Success: $pod is Running in $namespace."
+echo "Success: $pod is Running in $namespace, generated from a dry-run manifest."
 exit 0
