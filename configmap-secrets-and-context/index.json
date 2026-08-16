@@ -1,5 +1,5 @@
 {
-  "title": "CKAD Practice: Secrets, ConfigMaps & Security Context Recap",
+  "title": "ConfigMap, Secrets and Context",
   "description": "Wire a Secret into a second Deployment, load a ConfigMap into a Pod, then read a Pod's SecurityContext and nodeSelector fields.",
   "details": {
     "intro": {
