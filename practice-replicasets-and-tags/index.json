@@ -1,6 +1,6 @@
 {
-  "title": "CKAD Practice: ReplicaSets, Deployments & Image Tags",
-  "description": "Recap the ReplicaSet-to-Deployment relationship and practice identifying a running image tag.",
+  "title": "CKAD Practice: Converting a ReplicaSet to a Deployment",
+  "description": "Convert a bare ReplicaSet into a Deployment, then identify the exact image tag running after a new rollout.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,13 +8,14 @@
     },
     "steps": [
       {
-        "title": "ReplicaSet to Deployment",
+        "title": "Convert the ReplicaSet to a Deployment",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Which tag is running?",
+        "title": "Which tag is running now?",
         "text": "step2/text.md",
+        "foreground": "step2/foreground.sh",
         "verify": "step2/verify.sh"
       }
     ],

@@ -1,9 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-namespace="orders-ops"
-deployment="orders-api"
-answer_file="/root/orders-api.txt"
+namespace="store-ops"
+deployment="store-app"
+answer_file="/root/store-app.txt"
 
 actual_image="$(kubectl get deployment "$deployment" -n "$namespace" -o jsonpath='{.spec.template.spec.containers[0].image}')"
 expected_tag="${actual_image##*:}"

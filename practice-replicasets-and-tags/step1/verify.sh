@@ -3,6 +3,7 @@ set -euo pipefail
 
 namespace="store-ops"
 deployment="store-app"
+old_replicaset="store-replicas"
 expected_image="nginx:1.25"
 expected_replicas="3"
 
@@ -21,5 +22,10 @@ if [[ "${ready_replicas:-0}" != "$expected_replicas" ]]; then
   exit 1
 fi
 
-echo "Success: $deployment is running $expected_replicas ready replicas of $expected_image."
+if kubectl get replicaset "$old_replicaset" -n "$namespace" >/dev/null 2>&1; then
+  echo "The original ReplicaSet $old_replicaset must be deleted once $deployment is up."
+  exit 1
+fi
+
+echo "Success: $deployment replaces $old_replicaset with $expected_replicas ready replicas."
 exit 0

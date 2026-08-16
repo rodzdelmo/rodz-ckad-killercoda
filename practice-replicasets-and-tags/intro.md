@@ -1,5 +1,5 @@
-# CKAD Practice: ReplicaSets, Deployments & Image Tags
+# CKAD Practice: Converting a ReplicaSet to a Deployment
 
-A recap of what a Deployment gives you over a bare ReplicaSet, plus a quick exercise in reading exactly what's running right now.
+Convert a bare ReplicaSet into a Deployment by hand, then trace a fresh rollout on that Deployment back to its exact image tag.
 
 Click **Start** when the terminal is ready.
