@@ -2,7 +2,7 @@
 set -euo pipefail
 
 namespace="ckad-lab"
-pod="web-declarative"
+pod="web-imperative"
 expected_image="nginx:1.27-alpine"
 
 phase="$(kubectl get pod "$pod" -n "$namespace" -o jsonpath='{.status.phase}' 2>/dev/null || true)"

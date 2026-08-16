@@ -1,14 +1,10 @@
-# Fix a Broken Kubernetes Deployment
+# Creating a Pod: Declarative vs Imperative
 
-A development team deployed a small web application, but none of its Pods become ready.
+Kubernetes gives you two ways to create the same resource:
 
-In this scenario, you will:
+- **imperative** — a single `kubectl` command, fast and great for quick experiments; and
+- **declarative** — a YAML manifest applied with `kubectl apply -f`, reproducible and easy to version control.
 
-- inspect a Deployment and its Pods;
-- identify why the containers cannot start;
-- update the Deployment safely; and
-- confirm that all replicas are available.
-
-The resources are created in the `ckad-lab` namespace.
+In this scenario you'll create the same Pod both ways in the `ckad-lab` namespace, then diagnose and fix a third Pod that was created with a typo in its image tag.
 
 Click **Start** when the terminal is ready.

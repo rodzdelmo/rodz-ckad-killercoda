@@ -1,23 +1,15 @@
 ## Task
 
-The Deployment named `web` in namespace `ckad-lab` must run **three ready replicas**, using this container image:
+Create a Pod **imperatively** — with a single `kubectl` command, no YAML file involved.
 
-```text
-nginx:1.27-alpine
-```
+- name: `web-imperative`
+- image: `nginx:1.27-alpine`
+- namespace: `ckad-lab`
 
-Right now, none of its Pods are becoming ready.
-
-Just look around for now — don't change anything yet. Inspect the Deployment and its Pods and figure out why they aren't ready.
-
-Useful commands:
+Useful command:
 
 ```bash
-kubectl get deployments,pods -n ckad-lab
+kubectl run web-imperative --image=nginx:1.27-alpine -n ckad-lab
 ```
 
-```bash
-kubectl describe pod -n ckad-lab
-```
-
-Once you understand the failure, click **Next**.
+When `web-imperative` is `Running` in `ckad-lab`, click **Check**.

@@ -9,4 +9,5 @@ until kubectl wait --for=condition=Ready node --all --timeout=10s >/dev/null 2>&
   sleep 2
 done
 
-kubectl apply -f /root/assets/deployment1.yaml
+kubectl create namespace ckad-lab --dry-run=client -o yaml | kubectl apply -f -
+kubectl apply -f /root/assets/web-typo.yaml

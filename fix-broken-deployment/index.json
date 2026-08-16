@@ -1,6 +1,6 @@
 {
-  "title": "CKAD: Fix a Broken Deployment",
-  "description": "Diagnose and repair a Kubernetes Deployment whose Pods cannot start.",
+  "title": "CKAD: Creating a Pod — Declarative vs Imperative",
+  "description": "Create the same Pod two ways: imperatively with kubectl run, and declaratively by applying a manifest.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,13 +8,19 @@
     },
     "steps": [
       {
-        "title": "Look around",
-        "text": "step1/text.md"
+        "title": "Create a Pod imperatively",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
       },
       {
-        "title": "Fix the Deployment",
+        "title": "Create a Pod declaratively",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Diagnose and fix an image typo",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
       }
     ],
     "finish": {
@@ -22,7 +28,9 @@
     },
     "assets": {
       "host01": [
-        {"file": "deployment1.yaml", "target": "/root/assets", "chmod": "+w"}
+        {"file": "web-pod.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "web-typo.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "web-typo.yaml", "target": "/root/manifest", "chmod": "+w"}
       ]
     }
   },
