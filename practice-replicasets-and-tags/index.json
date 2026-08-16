@@ -1,6 +1,6 @@
 {
   "title": "CKAD: Deployment,RS & tags",
-  "description": "Convert a bare ReplicaSet into a Deployment, then identify the exact image tag running after a new rollout.",
+  "description": "Convert a bare ReplicaSet into a Deployment, identify the exact image tag running after a new rollout, then roll back a broken one.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -17,6 +17,12 @@
         "text": "step2/text.md",
         "foreground": "step2/foreground.sh",
         "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Roll back a bad rollout",
+        "text": "step3/text.md",
+        "foreground": "step3/foreground.sh",
+        "verify": "step3/verify.sh"
       }
     ],
     "finish": {
