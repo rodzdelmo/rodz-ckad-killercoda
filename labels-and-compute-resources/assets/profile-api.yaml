@@ -16,5 +16,5 @@ spec:
         app: profile-api
     spec:
       containers:
-        - name: profile-api
+        - name: nginx
           image: nginx:1.25
