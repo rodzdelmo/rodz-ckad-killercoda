@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-podaffinity
+  namespace: place-ops
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchLabels:
+              app: caches
+          topologyKey: kubernetes.io/hostname
+  containers:
+    - name: web
+      image: nginx:1.25

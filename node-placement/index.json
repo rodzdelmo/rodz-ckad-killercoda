@@ -1,0 +1,59 @@
+{
+  "title": "CKAD Practice: Node Placement",
+  "description": "Fix five broken scheduling constraints in a row: nodeSelector, node affinity, pod affinity, pod anti-affinity, and taints/tolerations.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix the nodeSelector",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix the node affinity rule",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Fix the pod affinity rule",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Fix the pod anti-affinity rule",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Fix the missing toleration",
+        "text": "step5/text.md",
+        "foreground": "step5/foreground.sh",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "cache-pod.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "web-nodeselector.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "web-nodeselector.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "web-nodeaffinity.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "web-nodeaffinity.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "web-podaffinity.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "web-podaffinity.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "web-podantiaffinity.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "web-podantiaffinity.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "web-taint.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "web-taint.yaml", "target": "/root/manifest", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-nodeselector
+  namespace: place-ops
+spec:
+  nodeSelector:
+    disktype: hdd
+  containers:
+    - name: web
+      image: nginx:1.25
