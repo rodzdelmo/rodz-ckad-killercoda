@@ -18,7 +18,24 @@ kubectl set resources deployment/profile-api -n accounts-ops \
   --requests=cpu=100m,memory=128Mi --limits=cpu=500m,memory=256Mi
 ```
 
-Declaratively — edit `/root/manifest/profile-api.yaml` (the same manifest from the previous step, now also carrying the `team` label) to add a `resources` block under the container, then:
+Declaratively — edit `/root/manifest/profile-api.yaml` (the same manifest from the previous step, now also carrying the `team` label) to add a `resources` block under the container:
+
+```yaml
+  template:
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.25
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+```
+
+The `resources` block is a sibling of `image` — nested under the container entry, not under `spec.template.metadata`. Then apply it:
 
 ```bash
 kubectl apply -f /root/manifest/profile-api.yaml
