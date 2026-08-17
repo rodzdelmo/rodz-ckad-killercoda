@@ -1,6 +1,6 @@
 {
   "title": "ConfigMap, Secrets and Context",
-  "description": "Wire a Secret into a second Deployment, load a ConfigMap into a Pod, then read a Pod's SecurityContext and nodeSelector fields.",
+  "description": "Load a ConfigMap into a Pod, wire a Secret into a second Deployment, then read a Pod's SecurityContext and nodeSelector fields.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -8,12 +8,12 @@
     },
     "steps": [
       {
-        "title": "Wire up a second Secret",
+        "title": "Load a ConfigMap into a Pod",
         "text": "step1/text.md",
         "verify": "step1/verify.sh"
       },
       {
-        "title": "Load a ConfigMap into a Pod",
+        "title": "Wire up a second Secret",
         "text": "step2/text.md",
         "verify": "step2/verify.sh"
       },

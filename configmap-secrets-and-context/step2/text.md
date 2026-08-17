@@ -1,28 +1,19 @@
 ## Task
 
-ConfigMap `app-config` already exists in namespace `config-ops` with key `APP_MODE=production`.
+Namespace `auth-ops` already runs Deployment `token-auth`, wired to Secret `token-secret` (key `SESSION_KEY`) to sign its sessions. The team is spinning up a second service that needs the exact same pattern with its own Secret.
 
-Create a Pod named `app-pod` (image `busybox:1.36`, command `sh -c "sleep 3600"`) that loads **every** key from that ConfigMap as environment variables.
+Create Secret `mail-secret` in `auth-ops` with key `SESSION_KEY` set to `M@ilKey789`, then create Deployment `mail-auth` that sources `SESSION_KEY` from it — following the same pattern as `token-auth`/`token-secret`.
 
-A Pod's `env` can't be patched in place once it's running, so generate the manifest first instead of using `kubectl run` directly:
-
-```bash
-kubectl run app-pod --image=busybox:1.36 -n config-ops --dry-run=client -o yaml \
-  --command -- sh -c "sleep 3600" > /root/app-pod.yaml
-```
-
-Edit `/root/app-pod.yaml` and add an `envFrom` entry under the container:
-
-```yaml
-      envFrom:
-        - configMapRef:
-            name: app-config
-```
-
-Then apply it:
+Useful commands:
 
 ```bash
-kubectl apply -f /root/app-pod.yaml
+kubectl get deployment token-auth -n auth-ops -o yaml
 ```
 
-When `kubectl exec app-pod -n config-ops -- printenv APP_MODE` prints `production`, click **Check**.
+```bash
+kubectl create secret generic mail-secret --from-literal=SESSION_KEY='M@ilKey789' -n auth-ops
+kubectl create deployment mail-auth --image=nginx:1.25 -n auth-ops
+kubectl set env deployment/mail-auth --from=secret/mail-secret -n auth-ops
+```
+
+When Deployment `mail-auth` is `Running` and `SESSION_KEY` resolves correctly inside its Pod, click **Check**.
