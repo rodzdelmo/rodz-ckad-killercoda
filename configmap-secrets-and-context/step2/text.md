@@ -1,6 +1,6 @@
 ## Task
 
-Namespace `auth-ops` already runs Deployment `token-auth`, wired to Secret `token-secret` (key `SESSION_KEY`) to sign its sessions. The team is spinning up a second service that needs the exact same pattern with its own Secret.
+Namespace `auth-ops` already runs Deployment `token-auth`, wired to Secret `token-secret` (key `SESSION_KEY`) to sign its sessions. The team is spinning up a second deployment that needs the exact same pattern with its own Secret.
 
 Create Secret `mail-secret` in `auth-ops` with key `SESSION_KEY` set to `M@ilKey789`, then create Deployment `mail-auth` that sources `SESSION_KEY` from it — following the same pattern as `token-auth`/`token-secret`.
 

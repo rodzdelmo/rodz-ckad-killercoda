@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profile-api
+  namespace: accounts-ops
+  labels:
+    app: profile-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: profile-api
+  template:
+    metadata:
+      labels:
+        app: profile-api
+    spec:
+      containers:
+        - name: profile-api
+          image: nginx:1.25

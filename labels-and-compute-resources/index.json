@@ -1,0 +1,33 @@
+{
+  "title": "CKAD Practice: Labels & Compute Resources",
+  "description": "Add a Pod template label to a Deployment and confirm a safe rolling update, then set CPU/memory requests and limits.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Label the Pods and roll out the change",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Set CPU and memory requests/limits",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "profile-api.yaml", "target": "/root/manifest", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

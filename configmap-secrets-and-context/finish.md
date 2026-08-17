@@ -1,6 +1,6 @@
 # Scenario complete
 
-You loaded a ConfigMap into a Pod's environment, cloned a Secret-backed Deployment pattern onto a second service, and read a Pod's `securityContext` and `nodeSelector` fields without touching anything.
+You loaded a ConfigMap into a Pod's environment, cloned a Secret-backed Deployment pattern onto a second deployment, and read a Pod's `securityContext`, `nodeSelector`, and node affinity rules without touching anything.
 
 Key commands used in this exercise:
 
@@ -18,5 +18,6 @@ This applies both in the CKAD exam and in real Kubernetes troubleshooting:
 
 1. `envFrom.configMapRef` loads every key in the ConfigMap as an env var — use `env.valueFrom.configMapKeyRef` instead when you only want one specific key;
 2. `kubectl set env --from=secret/<name>` (or `--from=configmap/<name>`) is faster than hand-writing `envFrom` in the exam, but it only works on objects with a Pod template (Deployments, DaemonSets, …) — a bare Pod's `env` is immutable once created;
-3. Secret values are base64-encoded at rest — always `base64 -d` before comparing; and
-4. a `Pending` Pod isn't always broken — check `nodeSelector`/affinity before assuming a bug.
+3. Secret values are base64-encoded at rest — always `base64 -d` before comparing;
+4. `nodeSelector` is a simple, hard equality match; `nodeAffinity` supports richer expressions (`In`, `NotIn`, `Exists`, …) and, with `preferredDuringSchedulingIgnoredDuringExecution`, soft preferences instead of hard requirements; and
+5. a `Pending` Pod isn't always broken — check `nodeSelector`/`affinity` before assuming a bug.
