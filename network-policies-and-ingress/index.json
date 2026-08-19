@@ -1,5 +1,5 @@
 {
-  "title": "CKAD Practice: Network Policies & Ingress",
+  "title": "CKAD Practice: Network Policies & Ingress (Part 2)",
   "description": "Write a NetworkPolicy that locks a service down to one caller, fix an Ingress pointing at a Service that doesn't exist, and add a missing rewrite-target annotation.",
   "details": {
     "intro": {

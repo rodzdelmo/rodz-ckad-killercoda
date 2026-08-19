@@ -1,5 +1,5 @@
 {
-  "title": "CKAD Practice: Storage Fundamentals & StatefulSets",
+  "title": "CKAD Practice: Storage Fundamentals & StatefulSets (Part 2)",
   "description": "Add a missing emptyDir volume, fix a hostPath type mismatch, resolve a PV/PVC access-mode and subPath problem, and correct a StatefulSet's volumeClaimTemplate reference.",
   "details": {
     "intro": {

@@ -1,5 +1,5 @@
 {
-  "title": "CKAD Practice: RBAC, KubeConfig & Admission Control",
+  "title": "CKAD Practice: RBAC, KubeConfig & Admission Control (Part 2)",
   "description": "Grant a missing RBAC verb, fix a kubeconfig pointed at the wrong cluster then the wrong user, get a Deployment's Pods past a validating webhook, and repair a manifest using a deprecated API version.",
   "details": {
     "intro": {
