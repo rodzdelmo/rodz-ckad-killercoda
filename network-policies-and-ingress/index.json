@@ -1,0 +1,46 @@
+{
+  "title": "CKAD Practice: Network Policies & Ingress",
+  "description": "Write a NetworkPolicy that locks a service down to one caller, fix an Ingress pointing at a Service that doesn't exist, and add a missing rewrite-target annotation.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Lock down invoice-api with a NetworkPolicy",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix the Ingress's backend Service name",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Add the missing rewrite-target annotation",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "invoice-api.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "billing-ui.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "invoice-api-policy.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "storefront-app.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "storefront-ingress.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "storefront-ingress.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "docs-app.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "docs-ingress.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "docs-ingress.yaml", "target": "/root/manifest", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

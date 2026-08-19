@@ -1,0 +1,56 @@
+{
+  "title": "CKAD Practice: RBAC, KubeConfig & Admission Control",
+  "description": "Grant a missing RBAC verb, fix a kubeconfig pointed at the wrong cluster then the wrong user, get a Deployment's Pods past a validating webhook, and repair a manifest using a deprecated API version.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Grant the missing RBAC verb",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Point kubeconfig at the right cluster",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Point kubeconfig at the right user",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Get past the validating webhook",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Fix the deprecated API version",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "ci-deployer-rbac.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "new-deployment.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "label-validator-server.py", "target": "/root/assets", "chmod": "+w"},
+        {"file": "label-validator-deploy.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "checkout-service.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "checkout-service.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "web-app.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "legacy-ingress.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "legacy-ingress.yaml", "target": "/root/manifest", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

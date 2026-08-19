@@ -1,0 +1,51 @@
+{
+  "title": "CKAD Practice: Storage Fundamentals & StatefulSets",
+  "description": "Add a missing emptyDir volume, fix a hostPath type mismatch, resolve a PV/PVC access-mode and subPath problem, and correct a StatefulSet's volumeClaimTemplate reference.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Add the missing emptyDir volume",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix the hostPath type mismatch",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Bind the PVC, then fix the subPath",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Fix the StatefulSet's volume reference",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "quote-cache-warmer.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "quote-cache-warmer.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "node-inspector.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "node-inspector.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "analytics-storage.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "report-writer.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "report-writer.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "redis-cluster.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "redis-cluster.yaml", "target": "/root/manifest", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

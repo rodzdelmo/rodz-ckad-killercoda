@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: billing-ui
+  namespace: billing-ops
+  labels:
+    app: billing-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: billing-ui
+  template:
+    metadata:
+      labels:
+        app: billing-ui
+    spec:
+      containers:
+        - name: billing-ui
+          image: nginx:1.25

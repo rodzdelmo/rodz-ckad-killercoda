@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: docs-ingress
+  namespace: docs-ops
+spec:
+  rules:
+    - host: docs.example.com
+      http:
+        paths:
+          - path: /docs(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: docs-svc
+                port:
+                  number: 80

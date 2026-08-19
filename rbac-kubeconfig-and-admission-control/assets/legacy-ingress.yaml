@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: legacy-ingress
+  namespace: web-ops
+spec:
+  rules:
+    - host: legacy.example.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web-app-svc
+              servicePort: 80

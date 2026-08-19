@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoice-api
+  namespace: payments-ops
+  labels:
+    app: invoice-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invoice-api
+  template:
+    metadata:
+      labels:
+        app: invoice-api
+    spec:
+      containers:
+        - name: invoice-api
+          image: hashicorp/http-echo:0.2.3
+          args:
+            - "-listen=:8080"
+            - "-text=invoice-api"
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: invoice-api
+  namespace: payments-ops
+spec:
+  selector:
+    app: invoice-api
+  ports:
+    - port: 8080
+      targetPort: 8080

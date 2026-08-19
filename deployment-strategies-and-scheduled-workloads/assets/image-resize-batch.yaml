@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: image-resize-batch
+  namespace: media-ops
+spec:
+  completions: 5
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: resize
+          image: busybox:1.36
+          command: ["sh", "-c", "echo resizing on $HOSTNAME; sleep 20"]

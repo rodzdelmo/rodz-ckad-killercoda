@@ -1,0 +1,25 @@
+# Starter skeleton - fill in the blanks (or write your own from scratch).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: invoice-api-policy
+  namespace: payments-ops
+spec:
+  podSelector:
+    matchLabels:
+      app: invoice-api
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        # TODO: one entry, with BOTH selectors below, so it means
+        # "billing-ui pods, in the billing-ops namespace" (AND, not OR).
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: # TODO
+          podSelector:
+            matchLabels:
+              app: # TODO
+      ports:
+        - protocol: TCP
+          port: 8080

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recs-stable
+  namespace: canary-ops
+  labels:
+    app: recs
+    track: stable
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: recs
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: recs
+        track: stable
+    spec:
+      containers:
+        - name: recs
+          image: nginx:1.25
+          ports:
+            - containerPort: 80

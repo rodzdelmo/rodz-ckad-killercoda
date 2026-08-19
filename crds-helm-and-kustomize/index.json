@@ -1,0 +1,42 @@
+{
+  "title": "CKAD Practice: CRDs, Helm & Kustomize",
+  "description": "Fix a custom resource rejected by CRD schema validation, add a missing Helm chart repo and install a chart, then repair a Kustomize resource list that doesn't match what's on disk.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Fix the custom resource's schema violation",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Add the missing Helm repo and install the chart",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Fix Kustomize's resource list",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "database-crd.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "orders-db.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "kustomization.yaml", "target": "/root/kustomize-lab/base", "chmod": "+w"},
+        {"file": "deployment.yaml", "target": "/root/kustomize-lab/base", "chmod": "+w"},
+        {"file": "service.yaml", "target": "/root/kustomize-lab/base", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

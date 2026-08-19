@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: thumbnail-batch
+  namespace: media-ops
+spec:
+  completions: 6
+  parallelism: 3
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: thumbnail
+          image: busybox:1.36
+          command: ["sh", "-c", "echo thumbnailing on $HOSTNAME; sleep 10"]

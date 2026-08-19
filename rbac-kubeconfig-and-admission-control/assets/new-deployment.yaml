@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-deployment
+  namespace: prod-ops
+  labels:
+    app: new-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: new-deployment
+  template:
+    metadata:
+      labels:
+        app: new-deployment
+    spec:
+      containers:
+        - name: web
+          image: nginx:1.25

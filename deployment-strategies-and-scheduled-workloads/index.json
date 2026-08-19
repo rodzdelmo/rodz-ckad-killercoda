@@ -1,0 +1,54 @@
+{
+  "title": "CKAD Practice: Deployment Strategies & Scheduled Workloads",
+  "description": "Finish a stuck blue-green cutover, fix a canary rollout that never receives traffic, correct a Job's parallelism, and repair a CronJob with an invalid pod template.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Finish the blue-green cutover",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix the canary rollout",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Fix the Job's parallelism",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Repair the CronJob's pod template",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "checkout-blue.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "checkout-green.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "checkout-service.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "checkout-service.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "recs-stable.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "recs-canary.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "recs-canary.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "recs-service.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "thumbnail-batch.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "image-resize-batch.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "nightly-cleanup.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "nightly-cleanup.yaml", "target": "/root/manifest", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

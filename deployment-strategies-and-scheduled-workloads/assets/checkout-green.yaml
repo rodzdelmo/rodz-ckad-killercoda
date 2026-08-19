@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout-green
+  namespace: retail-ops
+  labels:
+    app: checkout
+    version: green
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: checkout
+      version: green
+  template:
+    metadata:
+      labels:
+        app: checkout
+        version: green
+    spec:
+      containers:
+        - name: checkout
+          image: nginx:1.25
+          ports:
+            - containerPort: 80
