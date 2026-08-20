@@ -1,0 +1,15 @@
+# Starter skeleton - fill in the blanks (or write your own from scratch).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: invoice-api-egress-lockdown
+  namespace: payments-ops
+spec:
+  podSelector:
+    matchLabels:
+      app: invoice-api
+  policyTypes:
+    - Egress
+  egress: []
+    # TODO: add one entry here allowing egress to payments-db on port 5432,
+    # without deleting the deny-everything-else posture this policy started with.

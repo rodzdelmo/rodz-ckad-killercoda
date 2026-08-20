@@ -1,5 +1,5 @@
 {
-  "title": "CKAD Practice: CRDs, Helm & Kustomize (Part 2)",
+  "title": "CKAD Practice (Part 2) — 7. Manage: CRDs, Helm & Kustomize",
   "description": "Fix a custom resource rejected by CRD schema validation, add a missing Helm chart repo and install a chart, then repair a Kustomize resource list that doesn't match what's on disk.",
   "details": {
     "intro": {

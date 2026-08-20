@@ -9,12 +9,9 @@ until kubectl wait --for=condition=Ready node --all --timeout=10s >/dev/null 2>&
   sleep 2
 done
 
-for ns in payments-ops billing-ops storefront-ops docs-ops; do
+for ns in storefront-ops docs-ops; do
   kubectl create namespace "$ns" --dry-run=client -o yaml | kubectl apply -f -
 done
-
-kubectl apply -f /root/assets/invoice-api.yaml
-kubectl apply -f /root/assets/billing-ui.yaml
 
 kubectl apply -f /root/assets/storefront-app.yaml
 kubectl apply -f /root/assets/storefront-ingress.yaml

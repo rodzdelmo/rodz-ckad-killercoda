@@ -1,0 +1,38 @@
+{
+  "title": "CKAD Practice (Part 2) — 3. Protect: Network Policies",
+  "description": "Write a NetworkPolicy that locks a service down to one caller, then fix an egress-only policy that's blocking a legitimate database connection.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "foreground": "setup.sh"
+    },
+    "steps": [
+      {
+        "title": "Lock down invoice-api with an ingress NetworkPolicy",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Fix the egress policy blocking payments-db",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "invoice-api.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "billing-ui.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "invoice-api-policy.yaml", "target": "/root/manifest", "chmod": "+w"},
+        {"file": "payments-db.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "invoice-api-egress-policy.yaml", "target": "/root/assets", "chmod": "+w"},
+        {"file": "invoice-api-egress-policy.yaml", "target": "/root/manifest", "chmod": "+w"}
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

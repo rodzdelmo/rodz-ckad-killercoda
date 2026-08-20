@@ -1,5 +1,5 @@
 {
-  "title": "CKAD Practice: Deployment Strategies & Scheduled Workloads (Part 2)",
+  "title": "CKAD Practice (Part 2) — 1. Release: Deployment Strategies & Scheduled Workloads",
   "description": "Finish a stuck blue-green cutover, fix a canary rollout that never receives traffic, correct a Job's parallelism, and repair a CronJob with an invalid pod template.",
   "details": {
     "intro": {
